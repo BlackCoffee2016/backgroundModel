@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kongzhong.gw2.onepercentbg.mapper.HlgLiBaoMapper" >
+    
+			
+	<update id="updateLiBao" parameterType="HlgLiBao">
+	    UPDATE sxg_libao
+		SET name = #{name},
+		 start_time = #{startTime},
+		 end_time = #{endTime},
+		 prize = #{prize},
+		 giftid = #{giftId},
+		 type = #{type}
+		WHERE
+			id = #{id}
+	</update>		
+    
+    <select id="getLiBaoItems" parameterType="java.util.Map" resultType="LiBaoItems">
+        SELECT id,itemname itemName,itemcode itemCode,itemtype itemType,gifttype giftType,status,image,icon from u_item_dict 
+        where gifttype=#{giftType}
+        limit #{page.limitIndex},#{page.pageSize}
+    </select>
+    
+    <select id="getLiBaoItemsCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT count(*) from u_item_dict 
+        WHERE gifttype=#{giftType}
+    </select>
+    
+    <insert id="insertLiBaoItems" parameterType="LiBaoItems">
+        INSERT INTO u_item_dict (
+			itemname,
+			itemcode,
+			paypoint,
+			paymoney,
+			itemtype,
+			gifttype,
+			STATUS,
+			image,
+			icon
+		)
+		VALUES
+			(
+				#{itemName},
+				#{itemCode},
+				0,
+				0,
+				#{itemType},
+				#{giftType},
+				#{status},
+				#{image},
+				#{icon}
+			)
+    </insert>
+    
+    <select id="getBaoItemsById" parameterType="java.lang.Integer" resultType="LiBaoItems">
+       SELECT id,itemname itemName,itemcode itemCode,itemtype itemType,gifttype giftType,status,image,icon from u_item_dict where id=#{id}
+    </select>
+    
+    <update id="updateLiBaoItems" parameterType="LiBaoItems">
+       UPDATE u_item_dict SET itemname=#{itemName},itemcode=#{itemCode},itemtype=#{itemType},status=#{status},image=#{image},icon=#{icon}
+       where id=#{id}
+    </update>
+    
+    
+</mapper>
