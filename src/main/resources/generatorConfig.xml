@@ -5,8 +5,8 @@
 <generatorConfiguration>
     <context id="mysqlgenerator" targetRuntime="MyBatis3">
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-            connectionURL="jdbc:mysql://10.230.10.27:3306/gw2_dianquan?useUnicode=true&amp;characterEncoding=UTF-8" 
-            userId="hongdian"
+            connectionURL="jdbc:mysql://1.1.1.1:3306/gw2_dianquan?useUnicode=true&amp;characterEncoding=UTF-8" 
+            userId="23234"
             password="123456" />
         <javaModelGenerator targetPackage="com.kongzhong.gw2.onepercentbg.domain" targetProject="src\main\java" />
         <sqlMapGenerator targetPackage="com.kongzhong.gw2.onepercentbg.mapper" targetProject="src\main\resources" />
